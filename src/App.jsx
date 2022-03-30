@@ -34,19 +34,19 @@ const App = () => {
 
   async function onSubmitForm(e) {
     e.preventDefault();
-    console.log(e);
+    console.log(e.target.value);
     setUrl("");
     // pass the correct vlaue to below line.
-    // const postConfig = setPostConfig();
+    const postConfig = setPostConfig();
 
     // calling the axios post request 
-    // const res = await axios(postConfig).then(function (response) {
-    //   return(JSON.stringify(response.data.url));
-    // }).catch(function (error) {
-    //   console.log(error);
-    // });
+    const res = await axios(postConfig).then(function (response) {
+      return(JSON.stringify(response.data.url));
+    }).catch(function (error) {
+      console.log(error);
+    });
 
-    // console.log(res);
+    console.log(res);
     
   }
 
@@ -61,8 +61,6 @@ const App = () => {
     console.log(res);
     setUrl(res)    
   }
-
-  
     return (
       <div className="App">
         <br></br>
@@ -78,7 +76,6 @@ const App = () => {
         </form>
       </div>
     );
-  // }
 };
 
 export default App;
