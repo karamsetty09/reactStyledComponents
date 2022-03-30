@@ -1,5 +1,5 @@
 import './App.css';
-import react, { useState, Component } from 'react';
+import { Component } from 'react';
 import axios from 'axios';
 
 const config = {
@@ -11,16 +11,24 @@ const config = {
 };
 
 class App extends Component{
-  state = {loading: true, url: null}
-  setUrl(goturl){
-    this.setState((url) => ({url: goturl}));
+  constructor(){
+    super();
+    this.state = {
+      loading: true, url: null
+    };
+    this.onSubmitForm = this.onSubmitForm.bind(this);
   }
+
+  onSubmitForm(e) {
+    console.log(this._inputElemtent.value);
+    this._inputElemtent.value = "";
+    e.preventDefault();
+  }
+
   async componentDidMount() {
     const res = await axios(config).then(function (response) {
-      console.log(JSON.stringify(response.data));
       return(JSON.stringify(response.data.url));
     })
-    console.log(res);
     this.setState(Object.assign({loading: false, url: res}));
   }
   
@@ -28,18 +36,19 @@ class App extends Component{
     if(this.state.loading){
       return <h2>Loading ...</h2>
     }
-    const {url} = this.state;
     return (
       <div className="App">
         <br></br>
-        <form>
+        <form onSubmit={this.onSubmitForm}>
           <input
           type="text"
           name="url"
           placeholder="Github Repo link"
+          ref={myInput => (this._inputElemtent = myInput)}
           ></input>
-          <button type="submit">Save URL</button>
+          <button type="submit" >Save URL</button>
         </form>
+        <h1>{this.state.value}</h1>
       </div>
     );
   }
