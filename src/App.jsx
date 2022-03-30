@@ -34,15 +34,15 @@ const App = () => {
 
   async function onSubmitForm(e) {
     e.preventDefault();
-    // pass the correct vlaue to below line.
     const postConfig = setPostConfig(url);
 
-    // calling the axios post request 
+    // calling post to update endpoint. 
     const res = await axios(postConfig).then(function (response) {
       return response.data.url;
     }).catch(function (error) {
       console.log(error);
     });
+    setUrl(res);
   }
 
   useEffect(() => {
@@ -50,10 +50,12 @@ const App = () => {
   }, []);
 
   async function getUrl() {
+    // calling get before display of component
     const res = await axios(getConfig).then(function (response) {
       return response.data.url;
-    })
-    console.log(res);
+    }).catch(function (error) {
+      console.log(error);
+    });
     setUrl(res)    
   }
     return (
