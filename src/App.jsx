@@ -34,8 +34,6 @@ const App = () => {
 
   async function onSubmitForm(e) {
     e.preventDefault();
-    console.log(e.target.value);
-    setUrl("");
     // pass the correct vlaue to below line.
     const postConfig = setPostConfig();
 
