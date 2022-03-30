@@ -35,17 +35,14 @@ const App = () => {
   async function onSubmitForm(e) {
     e.preventDefault();
     // pass the correct vlaue to below line.
-    const postConfig = setPostConfig();
+    const postConfig = setPostConfig(url);
 
     // calling the axios post request 
     const res = await axios(postConfig).then(function (response) {
-      return(JSON.stringify(response.data.url));
+      return response.data.url;
     }).catch(function (error) {
       console.log(error);
     });
-
-    console.log(res);
-    
   }
 
   useEffect(() => {
@@ -54,7 +51,7 @@ const App = () => {
 
   async function getUrl() {
     const res = await axios(getConfig).then(function (response) {
-      return(JSON.stringify(response.data.url));
+      return response.data.url;
     })
     console.log(res);
     setUrl(res)    
