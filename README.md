@@ -10,8 +10,9 @@ Change Directory: cd vdaq
 
 Install Packages: `npm install`
 
-### `Dependencies: .env`
-creat File Naming: `.env`
+### `Dependencies: .env file`
+
+Creat File Naming: `.env`
 
 ### Fill Variable details:
 
