@@ -6,12 +6,10 @@ React URL Submission application to end point.
 
 git Clone: https://github.com/karamsetty09/vdaq.git
 
-cd vdaq
+Change Directory: cd vdaq
 
-`npm install`
-`npm run build`
-`npm run start`
-
+Install Packages: `npm install`
+Start Project: `npm run start`
 
 ### `npm start`
 
