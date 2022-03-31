@@ -30,7 +30,7 @@ function EditableInput() {
     const getUrl = useCallback(async () => {
         const retrievedUrl = await (await axiosInstance.get()).data
         seturl(retrievedUrl.url)
-    }, [seturl])
+    }, [])
 
     useEffect(() => {
         getUrl()
@@ -42,6 +42,7 @@ function EditableInput() {
                 placeholder='<your app code repo link>'
                 value={url}
                 onChange={handleChange}
+                data-testid="submit-url-link"
             />
             {urlError && <span>{urlError}</span>}
             <button onClick={saveUrl}>Save URL</button>
